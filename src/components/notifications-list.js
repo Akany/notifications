@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Notification from './notification';
+
 export default class NotificationsList extends React.Component {
 	render() {
 		const { notifications } = this.props;
@@ -12,10 +14,7 @@ export default class NotificationsList extends React.Component {
 	mapNotifications(notifications) {
 		return notifications.map((notification, key) => {
 			return (
-				<div key={ key }>
-					<h1>{ notification.description }</h1>
-					<h3>{ notification.interval }</h3>
-				</div>
+				<Notification key={ key } notification={ notification } />
 			);
 		})
 	}

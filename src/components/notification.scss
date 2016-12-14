@@ -1,0 +1,17 @@
+.notification {
+	display: flex;
+	align-items: center;
+
+	.notification-body {
+		flex: 1;
+		
+		.notification-title {
+			font-size: .7em;
+		}
+
+		.notification-interval {
+			font-size: .5em;
+		}
+	}
+
+}
