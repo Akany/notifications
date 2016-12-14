@@ -12,9 +12,15 @@ export default class NotificationsList extends React.Component {
 	}
 
 	mapNotifications(notifications) {
+		const { startNotification, stopNotification } = this.props;
+
 		return notifications.map((notification, key) => {
 			return (
-				<Notification key={ key } notification={ notification } />
+				<Notification
+					key={key}
+					notification={notification }
+					start={() => {startNotification(notification)}}
+					stop={() => stopNotification(notification)} />
 			);
 		})
 	}

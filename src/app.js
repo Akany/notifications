@@ -24,10 +24,6 @@ class Layout extends React.Component {
 
 var store = createStore(reducer);
 
-window.dis = (name, interval) => {
-	store.dispatch(createNotification(name, interval));
-};
-
 ReactDom.render(
 	<Provider store={store}>
 		<Layout />

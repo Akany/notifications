@@ -13,9 +13,6 @@ export default function notifications(state = [], action) {
 				notification(action.description, action.interval)
 			];
 		default:
-			return [{
-				description: 'First notification',
-				interval : 100
-			}];
+			return state;
 	}
 }

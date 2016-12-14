@@ -5,10 +5,13 @@ require('./notification.scss');
 export default class Notification extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			running: false
+		};
 	}
 
 	render() {
-		const { notification } = this.props;
+		const { notification, start } = this.props;
 
 		return (
 			<div className="notification">
@@ -21,9 +24,33 @@ export default class Notification extends React.Component {
 					</div>
 				</div>
 				<div>
-					<button className="btn btn-success">Start</button>
+					{this.getAction()}
 				</div>
 			</div>
 		);
+	}
+
+	getAction() {
+		return this.state.running ?
+			<button className="btn btn-danger" onClick={this.stop.bind(this)}>Stop</button> :
+			<button className="btn btn-success" onClick={this.start.bind(this)}>Start</button>
+	}
+
+	start() {
+		const { start, notification } = this.props;
+		
+		start();
+		this.interval = setInterval(() => {
+			console.log(notification.description);
+		}, notification.interval);
+		this.setState({running: true});
+	}
+
+	stop() {
+		const { stop } = this.props;
+
+		clearInterval(this.interval);
+		this.setState({running: false});
+		stop();
 	}
 }
